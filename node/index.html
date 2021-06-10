@@ -26,20 +26,18 @@
 var socket = io();
 
 socket.on('server message', function(data){
+    console.log(data);
     $('#chatLog').append('<li> '+ data.username +' : ' + data.message + ' </li>');
  });
 
 socket.on('join', function(data){
+    console.log(data);
     $('#chatLog').append('<li> ' + data.username + '님이 방을 들어왔습니다 </li>');
 });
 
 socket.on('leave', function(data){
     $('#chatLog').append('<li> ' + data.username + '님이 방을 나갔습니다 </li>');
 });
-
-// socket.on('server message', function(data){
-//     $('#chatLog').append('<li> '+ data.message + ' </li>');
-// });
 
 $(document).ready(function(){
     $('#sendForm').submit(function(){

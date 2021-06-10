@@ -16,18 +16,16 @@ const io = listen(server);
 io.adapter(redis({ host: 'redis', port: 6379 }));
 
 const color = [
-    "yellow",
-    "green",
-    "red",
-    "blue",
-    "white",
-    "black",
+    "아무개",
+    "빵빵",
+    "와우리리잉",
+    "키키킹",
+    "킹콩",
+    "화채",
 ]
 
 io.on('connection', (socket) => { 
-
     const username = color[ Math.floor(Math.random() * 6) ];
-
     socket.broadcast.emit( 'join',  {  username  } );
 
     socket.on('client message', (data) => {
@@ -40,5 +38,4 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         socket.broadcast.emit('leave', { username });
     });
-
 });
