@@ -27,6 +27,7 @@ const color = [
 io.on('connection', (socket) => { 
     const username = color[ Math.floor(Math.random() * 6) ];
     socket.broadcast.emit( 'join',  {  username  } );
+    //console.log(message)
 
     socket.on('client message', (data) => {
         io.emit('server message', {
