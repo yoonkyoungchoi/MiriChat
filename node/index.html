@@ -25,10 +25,10 @@
 <script>
 var socket = io();
 
-socket.on('server message', function(data){
-    console.log(data);
-    $('#chatLog').append('<li> '+ data.username +' : ' + data.message + ' </li>');
- });
+// socket.on('server message', function(data){
+//     console.log(data);
+//     $('#chatLog').append('<li> '+ data.username +' : ' + data.message + ' </li>');
+//  });
 
 socket.on('join', function(data){
     console.log(data);
