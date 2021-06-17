@@ -16,12 +16,12 @@ const io = listen(server);
 io.adapter(redis({ host: 'redis', port: 6379 }));
 
 const color = [
-    "아무개",
-    "빵빵",
-    "와우리리잉",
-    "키키킹",
-    "킹콩",
-    "화채",
+    "yellow",
+    "green",
+    "red",
+    "blue",
+    "white",
+    "black",
 ]
 
 io.on('connection', (socket) => { 
