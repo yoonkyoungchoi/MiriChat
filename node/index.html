@@ -25,10 +25,10 @@
 <script>
 var socket = io();
 
-// socket.on('server message', function(data){
-//     console.log(data);
-//     $('#chatLog').append('<li> '+ data.username +' : ' + data.message + ' </li>');
-//  });
+socket.on('server message', function(data){
+    console.log(data);
+    $('#chatLog').append('<li> '+ data.username +' : ' + data.message + ' </li>');
+ });
 
 socket.on('join', function(data){
     console.log(data);
@@ -43,7 +43,7 @@ $(document).ready(function(){
     $('#sendForm').submit(function(){
         var message = $('#sendForm input[name=message]');
         socket.emit('client message', { message : message.val()});
-        message.val('');
+        message.val(' ');
         console.log(data.message);
         return false;
     });
