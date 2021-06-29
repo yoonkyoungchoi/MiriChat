@@ -1,5 +1,6 @@
 const express = require('express');
 const redis = require('socket.io-redis');
+
 const app = express();
 const port = 3000;
 
@@ -25,10 +26,10 @@ const color = [
 ]
 
 io.on('connection', (socket) => { 
+
     const username = color[ Math.floor(Math.random() * 6) ];
+
     socket.broadcast.emit( 'join',  {  username  } );
-    //메세지 확인
-    console.log(message)
 
     socket.on('client message', (data) => {
         io.emit('server message', {
@@ -37,10 +38,8 @@ io.on('connection', (socket) => {
         });
     });
 
-    //전체 메세지 뿌려줌
-    console.log(data.message);
-
     socket.on('disconnect', () => {
         socket.broadcast.emit('leave', { username });
     });
+
 });

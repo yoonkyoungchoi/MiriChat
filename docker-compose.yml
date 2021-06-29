@@ -29,6 +29,13 @@ node-3:
     expose:
         - "3000"
 
+node-4:
+    build: ./node
+    links:
+        - redis
+    expose:
+        - "3000"
+
 redis:
     image: redis:alpine
     expose:
