@@ -26,14 +26,17 @@
 <script>
 var socket = io();
 
+// 사용자 이름과 메세지 출력
 socket.on('server message', function(data){
     $('#chatLog').append('<li> '+ data.username +' : ' + data.message + ' </li>');
  });
 
+ // 방에 입장할 때 유저 이름과 함께 출력
 socket.on('join', function(data){
     $('#chatLog').append('<li> ' + data.username + '님이 방을 들어왔습니다 </li>');
 });
 
+// 방을 떠날 때 유저 이름과 함께 출력
 socket.on('leave', function(data){
     $('#chatLog').append('<li> ' + data.username + '님이 방을 나갔습니다 </li>');
 });
@@ -41,6 +44,7 @@ socket.on('leave', function(data){
 $(document).ready(function(){
     $('#sendForm').submit(function(){
         var message = $('#sendForm input[name=message]');
+        // 메세지와 값을 출력
         socket.emit('client message', { message : message.val()});
         message.val('');
         return false;
