@@ -1,7 +1,9 @@
 const express = require('express');
+// 통신 소켓
 const redis = require('socket.io-redis');
 
 const app = express();
+// server 포트 설정
 const port = 3000;
 
 // index파일로 넘겨줌
